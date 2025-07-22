@@ -7,7 +7,7 @@ export default function Header() {
 
   return (
     <motion.header
-      className="bg-[#0f1a13] text-[#e6c068] px-6 py-4 flex justify-between items-center border-b border-[#2a3d2f]"
+      className="bg-[#0f1a13] text-[#e6c068] px-6 h-16 flex justify-between items-center border-b border-[#2a3d2f]"
       initial={{ y: -100, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.8, delay: 0.5 }}
@@ -19,7 +19,7 @@ export default function Header() {
         <motion.img
           src="/logo.png"
           alt="Logo"
-          className="w-10 h-10"
+          className="w-20 h-20"
           whileHover={{ rotate: 360 }}
           transition={{ duration: 0.6 }}
         />

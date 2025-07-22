@@ -4,15 +4,15 @@ import { motion } from "framer-motion";
 
 const companies = [
   {
-    name: "Company A",
+    name: "Dosapark",
     description: "Industry description and impact summary.",
   },
   {
-    name: "Company B",
+    name: "Sortlist",
     description: "Industry description and impact summary.",
   },
   {
-    name: "Company C",
+    name: "Skillpedia",
     description: "Industry description and impact summary.",
   },
 ];
