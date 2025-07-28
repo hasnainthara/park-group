@@ -1,7 +1,7 @@
 "use client";
 
 import { motion, useScroll, useTransform } from "framer-motion";
-import { ChevronDown, Sparkles, TrendingUp, Users, Globe } from "lucide-react";
+import { ChevronDown, TrendingUp, Users, Globe } from "lucide-react";
 import { useRef, useEffect, useState } from "react";
 
 export default function Hero() {
@@ -39,83 +39,18 @@ export default function Hero() {
       ref={ref}
       className="relative min-h-screen bg-gradient-to-br from-[#0a0f0c] via-[#1a2e1f] to-[#243529] text-[#f8f6f0] overflow-hidden flex items-center justify-center"
     >
-      {/* Animated Background Mesh */}
-      <div className="absolute inset-0 opacity-30">
-        <div className="absolute inset-0 bg-gradient-to-r from-[#e6c068]/10 via-transparent to-[#e6c068]/10 animate-pulse" />
+      {/* Simplified Background */}
+      <div className="absolute inset-0 opacity-20">
+        <div className="absolute inset-0 bg-gradient-to-r from-[#e6c068]/5 via-transparent to-[#e6c068]/5" />
         <motion.div
           className="absolute inset-0"
           style={{
             background: `radial-gradient(circle at ${50 + mousePosition.x}% ${
               50 + mousePosition.y
-            }%, rgba(230, 192, 104, 0.1) 0%, transparent 50%)`,
+            }%, rgba(230, 192, 104, 0.05) 0%, transparent 50%)`,
           }}
         />
       </div>
-
-      {/* Dynamic Floating Elements */}
-      <motion.div
-        className="absolute top-20 left-20 w-32 h-32 border-2 border-[#e6c068] opacity-20"
-        animate={{
-          rotate: [0, 360],
-          scale: [1, 1.2, 1],
-          x: [0, 30, 0],
-          y: [0, -20, 0],
-        }}
-        transition={{
-          duration: 15,
-          repeat: Infinity,
-          ease: "easeInOut",
-        }}
-        style={{
-          rotate: 45,
-          x: mousePosition.x,
-          y: mousePosition.y,
-        }}
-      />
-
-      <motion.div
-        className="absolute bottom-20 right-20 w-24 h-24 border-2 border-[#e6c068] opacity-25"
-        animate={{
-          rotate: [0, -360],
-          scale: [1, 0.8, 1.3, 1],
-          x: [0, -30, 0],
-          y: [0, 25, 0],
-        }}
-        transition={{
-          duration: 18,
-          repeat: Infinity,
-          ease: "easeInOut",
-          delay: 2,
-        }}
-        style={{
-          rotate: 12,
-          x: -mousePosition.x,
-          y: -mousePosition.y,
-        }}
-      />
-
-      {/* Floating Particles */}
-      {[...Array(12)].map((_, i) => (
-        <motion.div
-          key={i}
-          className="absolute w-2 h-2 bg-[#e6c068] rounded-full opacity-40"
-          style={{
-            left: `${Math.random() * 100}%`,
-            top: `${Math.random() * 100}%`,
-          }}
-          animate={{
-            y: [0, -100, 0],
-            opacity: [0.4, 1, 0.4],
-            scale: [1, 1.5, 1],
-          }}
-          transition={{
-            duration: 6 + Math.random() * 4,
-            repeat: Infinity,
-            delay: Math.random() * 3,
-            ease: "easeInOut",
-          }}
-        />
-      ))}
 
       {/* Main Content */}
       <motion.div
@@ -129,7 +64,6 @@ export default function Hero() {
           transition={{ duration: 0.8, delay: 0.2 }}
           className="inline-flex items-center space-x-2 bg-[#1a2e1f]/80 backdrop-blur-sm border border-[#e6c068]/30 rounded-full px-6 py-3 mb-8"
         >
-          <Sparkles className="w-5 h-5 text-[#e6c068]" />
           <span className="text-[#e6c068] font-semibold">
             Premium Investment Portfolio
           </span>
@@ -156,11 +90,10 @@ export default function Hero() {
           <motion.span
             className="inline-block mx-3 text-[#e6c068] font-semibold"
             animate={{
-              scale: [1, 1.1, 1],
-              rotate: [0, 2, -2, 0],
+              scale: [1, 1.05, 1],
             }}
             transition={{
-              duration: 3,
+              duration: 4,
               repeat: Infinity,
               repeatType: "reverse",
             }}

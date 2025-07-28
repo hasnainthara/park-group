@@ -68,9 +68,9 @@ export default function Intro({ show }: IntroOverlayProps) {
 
           {/* Main logo with fade animation only */}
           <motion.img
-            src="/logo.png"
+            src="/logoo.png"
             alt="Park Groups Logo"
-            className="w-70 h-70 relative z-10"
+            className="w-100 h-100 relative z-10"
             initial={{ opacity: 0 }}
             animate={{
               opacity: [0, 0.7, 0.4, 0.9, 0.6, 1],

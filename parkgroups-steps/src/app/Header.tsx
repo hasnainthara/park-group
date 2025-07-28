@@ -2,7 +2,7 @@
 
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useState, useEffect } from "react";
-import { Menu, X, Sparkles, ChevronDown } from "lucide-react";
+import { Menu, X, ChevronDown } from "lucide-react";
 
 export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -21,10 +21,7 @@ export default function Header() {
   ];
 
   useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
-    };
-
+    const handleScroll = () => setIsScrolled(window.scrollY > 50);
     const handleMouseMove = (e) => {
       setMousePosition({
         x: (e.clientX - window.innerWidth / 2) / 100,
@@ -34,7 +31,6 @@ export default function Header() {
 
     window.addEventListener("scroll", handleScroll);
     window.addEventListener("mousemove", handleMouseMove);
-
     return () => {
       window.removeEventListener("scroll", handleScroll);
       window.removeEventListener("mousemove", handleMouseMove);
@@ -43,7 +39,6 @@ export default function Header() {
 
   return (
     <>
-      {/* Animated Background Mesh */}
       <div className="fixed inset-0 pointer-events-none z-0">
         <motion.div
           className="absolute inset-0 opacity-5"
@@ -69,10 +64,7 @@ export default function Header() {
           opacity: headerOpacity,
         }}
       >
-        {/* Premium glow effect */}
         <div className="absolute inset-0 bg-gradient-to-r from-[#e6c068]/5 via-transparent to-[#e6c068]/5 opacity-50" />
-
-        {/* Animated top border */}
         <motion.div
           className="absolute top-0 left-0 h-0.5 bg-gradient-to-r from-transparent via-[#e6c068] to-transparent"
           initial={{ scaleX: 0 }}
@@ -81,58 +73,39 @@ export default function Header() {
         />
 
         <div className="relative h-full max-w-7xl mx-auto px-6 flex justify-between items-center">
-          {/* Logo Section with Enhanced Animation */}
+          {/* Updated Logo Section */}
           <motion.div
-            className="flex items-center space-x-4 group cursor-pointer"
+            className="flex items-center gap-4 min-w-[250px] group cursor-pointer"
             whileHover={{ scale: 1.02 }}
             transition={{ duration: 0.3 }}
-            style={{
-              x: mousePosition.x * 0.5,
-              y: mousePosition.y * 0.3,
-            }}
+            style={{ x: mousePosition.x * 0.5, y: mousePosition.y * 0.3 }}
           >
-            {/* Logo Container with Glow */}
             <motion.div
-              className="relative"
-              whileHover={{ rotate: [0, -5, 5, 0] }}
+              className={`transition-all duration-700 flex items-center justify-center ${
+                isScrolled ? "w-16 h-16" : "w-20 h-20"
+              }`}
+              whileHover={{ rotate: [0, -2, 2, 0] }}
               transition={{ duration: 0.6 }}
             >
-              {/* Glow effect behind logo */}
-              <motion.div
-                className="absolute inset-0 bg-[#e6c068] rounded-full blur-xl opacity-20 scale-150"
-                animate={{
-                  scale: [1.2, 1.5, 1.2],
-                  opacity: [0.1, 0.3, 0.1],
+              <motion.img
+                src="/pgnewlogo.png"
+                alt="Park Groups Logo"
+                className="w-full h-full object-contain"
+                style={{
+                  filter:
+                    "sepia(1) hue-rotate(35deg) saturate(1.8) brightness(1.4) contrast(1.1)",
                 }}
-                transition={{
-                  duration: 3,
-                  repeat: Infinity,
-                  ease: "easeInOut",
-                }}
-              />
-
-              <motion.div
-                className={`relative bg-gradient-to-br from-[#e6c068] to-[#d4af37] rounded-2xl p-2 shadow-2xl border-2 border-[#e6c068]/30 ${
-                  isScrolled ? "w-12 h-12" : "w-16 h-16"
-                } transition-all duration-700`}
                 whileHover={{
-                  boxShadow: "0 0 30px rgba(230, 192, 104, 0.6)",
-                  borderColor: "rgba(230, 192, 104, 0.8)",
+                  scale: 1.05,
+                  filter:
+                    "sepia(1) hue-rotate(35deg) saturate(2) brightness(1.6) contrast(1.2)",
                 }}
-              >
-                <motion.img
-                  src="/logo.png"
-                  alt="Park Groups Logo"
-                  className="w-full h-full object-contain filter brightness-0"
-                  whileHover={{ scale: 1.1 }}
-                  transition={{ duration: 0.3 }}
-                />
-              </motion.div>
+                transition={{ duration: 0.3 }}
+              />
             </motion.div>
 
-            {/* Company Name with Enhanced Typography */}
             <motion.div
-              className="space-y-1"
+              className="space-y-0.5"
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8, delay: 0.4 }}
@@ -144,7 +117,10 @@ export default function Header() {
                 whileHover={{
                   backgroundImage:
                     "linear-gradient(45deg, #e6c068, #f8f6f0, #d4af37, #e6c068)",
-                  transition: { duration: 0.5 },
+                }}
+                style={{
+                  textShadow: "0 0 10px rgba(230, 192, 104, 0.3)",
+                  lineHeight: "1.1",
                 }}
               >
                 Park Groups
@@ -152,13 +128,23 @@ export default function Header() {
 
               {!isScrolled && (
                 <motion.div
-                  className="flex items-center space-x-2 text-xs text-[#c5b896]"
+                  className="text-xs text-[#e6c068]/80 font-medium mt-0"
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   transition={{ delay: 0.8 }}
+                  style={{
+                    textShadow: "0 0 5px rgba(230, 192, 104, 0.2)",
+                  }}
                 >
-                  <Sparkles className="w-3 h-3 text-[#e6c068]" />
-                  <span className="font-medium">Premium Investments</span>
+                  <span className="relative">
+                    Premium Investments
+                    <motion.div
+                      className="absolute -bottom-0.5 left-0 w-full h-px bg-gradient-to-r from-[#e6c068]/60 to-transparent"
+                      initial={{ scaleX: 0 }}
+                      animate={{ scaleX: 1 }}
+                      transition={{ duration: 1, delay: 1.2 }}
+                    />
+                  </span>
                 </motion.div>
               )}
             </motion.div>
@@ -211,34 +197,6 @@ export default function Header() {
                   {/* Underline effect */}
                   <motion.div className="absolute bottom-0 left-3 right-3 h-0.5 bg-gradient-to-r from-[#e6c068] to-[#d4af37] origin-left transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300" />
                 </motion.a>
-
-                {/* Floating particles on hover */}
-                <motion.div
-                  className="absolute inset-0 pointer-events-none"
-                  initial={{ opacity: 0 }}
-                  whileHover={{ opacity: 1 }}
-                >
-                  {[...Array(3)].map((_, i) => (
-                    <motion.div
-                      key={i}
-                      className="absolute w-1 h-1 bg-[#e6c068] rounded-full"
-                      style={{
-                        left: `${30 + i * 20}%`,
-                        top: `${20 + i * 15}%`,
-                      }}
-                      animate={{
-                        y: [-5, -15, -5],
-                        opacity: [0, 1, 0],
-                        scale: [0.5, 1, 0.5],
-                      }}
-                      transition={{
-                        duration: 1.5,
-                        repeat: Infinity,
-                        delay: i * 0.2,
-                      }}
-                    />
-                  ))}
-                </motion.div>
               </motion.div>
             ))}
 
