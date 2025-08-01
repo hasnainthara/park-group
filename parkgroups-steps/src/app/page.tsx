@@ -5,6 +5,8 @@ import Intro from "./Intro";
 import Header from "./Header";
 import Hero from "./Hero";
 import Portfolio from "./Portfolio";
+import About from "./About";
+import Contact from "./Contact";
 
 export default function HomePage() {
   const [showIntro, setShowIntro] = useState(true);
@@ -20,13 +22,15 @@ export default function HomePage() {
 
       {/* Main blurred page while intro active */}
       <div
-        className={`${
+        className={`relative ${
           showIntro ? "blur-md" : "blur-0"
         } transition-all duration-700`}
       >
         <Header />
         <Hero />
         <Portfolio />
+        <About />
+        <Contact />
 
         {/* Footer */}
         <footer className="bg-[#1a2e1f] text-[#e6c068] text-center py-6 border-t border-[#2a3d2f]">

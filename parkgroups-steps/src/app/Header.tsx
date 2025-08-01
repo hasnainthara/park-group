@@ -13,16 +13,28 @@ export default function Header() {
   const headerOpacity = useTransform(scrollY, [0, 100], [0.95, 0.98]);
   const headerBlur = useTransform(scrollY, [0, 100], [10, 25]);
 
+  // Smooth scroll function
+  const scrollToSection = (sectionId: string) => {
+    const element = document.getElementById(sectionId);
+    if (element) {
+      element.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+      });
+    }
+    setIsMobileMenuOpen(false);
+  };
+
   const navItems = [
-    { name: "Home", href: "#", hasDropdown: false },
-    { name: "About", href: "#", hasDropdown: false },
-    { name: "Companies", href: "#", hasDropdown: true },
-    { name: "Contact", href: "#", hasDropdown: false },
+    { name: "Home", sectionId: "hero", hasDropdown: false },
+    { name: "About", sectionId: "about", hasDropdown: false },
+    { name: "Companies", sectionId: "portfolio", hasDropdown: true },
+    { name: "Contact", sectionId: "contact", hasDropdown: false },
   ];
 
   useEffect(() => {
     const handleScroll = () => setIsScrolled(window.scrollY > 50);
-    const handleMouseMove = (e) => {
+    const handleMouseMove = (e: { clientX: number; clientY: number }) => {
       setMousePosition({
         x: (e.clientX - window.innerWidth / 2) / 100,
         y: (e.clientY - window.innerHeight / 2) / 100,
@@ -73,12 +85,12 @@ export default function Header() {
         />
 
         <div className="relative h-full max-w-7xl mx-auto px-6 flex justify-between items-center">
-          {/* Updated Logo Section */}
           <motion.div
             className="flex items-center gap-4 min-w-[250px] group cursor-pointer"
             whileHover={{ scale: 1.02 }}
             transition={{ duration: 0.3 }}
             style={{ x: mousePosition.x * 0.5, y: mousePosition.y * 0.3 }}
+            onClick={() => scrollToSection("hero")}
           >
             <motion.div
               className={`transition-all duration-700 flex items-center justify-center ${
@@ -160,19 +172,17 @@ export default function Header() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.6 + index * 0.1 }}
               >
-                <motion.a
-                  href={item.href}
+                <motion.button
+                  onClick={() => scrollToSection(item.sectionId)}
                   className="relative flex items-center space-x-1 px-6 py-3 text-[#f8f6f0] font-medium transition-all duration-300 hover:text-[#e6c068] group"
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                 >
-                  {/* Hover background effect */}
                   <motion.div
                     className="absolute inset-0 bg-gradient-to-r from-[#e6c068]/10 to-[#d4af37]/10 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"
                     layoutId={`nav-bg-${index}`}
                   />
 
-                  {/* Animated border */}
                   <motion.div
                     className="absolute inset-0 border border-[#e6c068]/20 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"
                     initial={{ scale: 0.8 }}
@@ -194,13 +204,11 @@ export default function Header() {
                     </motion.div>
                   )}
 
-                  {/* Underline effect */}
                   <motion.div className="absolute bottom-0 left-3 right-3 h-0.5 bg-gradient-to-r from-[#e6c068] to-[#d4af37] origin-left transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300" />
-                </motion.a>
+                </motion.button>
               </motion.div>
             ))}
 
-            {/* CTA Button */}
             <motion.button
               className="ml-6 group relative bg-gradient-to-r from-[#e6c068] to-[#d4af37] text-[#0a0f0c] px-6 py-3 rounded-2xl font-bold shadow-xl border border-[#e6c068]/30 overflow-hidden"
               initial={{ opacity: 0, scale: 0.8 }}
@@ -211,10 +219,10 @@ export default function Header() {
                 boxShadow: "0 10px 30px rgba(230, 192, 104, 0.4)",
               }}
               whileTap={{ scale: 0.95 }}
+              onClick={() => scrollToSection("contact")}
             >
               <span className="relative z-10">Get Started</span>
 
-              {/* Button shine effect */}
               <motion.div
                 className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent -translate-x-full"
                 animate={{ x: ["0%", "200%"] }}
@@ -243,7 +251,6 @@ export default function Header() {
           </motion.button>
         </div>
 
-        {/* Bottom glow */}
         <motion.div
           className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#e6c068]/50 to-transparent"
           initial={{ scaleX: 0 }}
@@ -263,9 +270,9 @@ export default function Header() {
       >
         <div className="flex flex-col items-center justify-center h-full space-y-8">
           {navItems.map((item, index) => (
-            <motion.a
+            <motion.button
               key={item.name}
-              href={item.href}
+              onClick={() => scrollToSection(item.sectionId)}
               className="text-3xl font-bold text-[#f8f6f0] hover:text-[#e6c068] transition-colors"
               initial={{ opacity: 0, y: 50 }}
               animate={{
@@ -273,10 +280,9 @@ export default function Header() {
                 y: isMobileMenuOpen ? 0 : 50,
               }}
               transition={{ duration: 0.4, delay: index * 0.1 }}
-              onClick={() => setIsMobileMenuOpen(false)}
             >
               {item.name}
-            </motion.a>
+            </motion.button>
           ))}
         </div>
       </motion.div>

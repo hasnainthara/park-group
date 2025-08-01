@@ -64,9 +64,7 @@ export default function Hero() {
           transition={{ duration: 0.8, delay: 0.2 }}
           className="inline-flex items-center space-x-2 bg-[#1a2e1f]/80 backdrop-blur-sm border border-[#e6c068]/30 rounded-full px-6 py-3 mb-8"
         >
-          <span className="text-[#e6c068] font-semibold">
-            Premium Investment Portfolio
-          </span>
+          <span className="text-[#e6c068] font-semibold"></span>
         </motion.div>
 
         {/* Main Title */}
