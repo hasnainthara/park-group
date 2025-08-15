@@ -52,7 +52,7 @@ const sectors = [
         name: "Curry Vending",
         description:
           "Revolutionary cloud kitchen concept delivering authentic Indian cuisine through innovative vending solutions, combining traditional flavors with modern convenience technology.",
-        logo: "/placeholder-logo.png",
+        logo: "/logo.png",
         website: "#",
         impact:
           "Transforming food delivery through automated kitchen solutions",
@@ -143,7 +143,7 @@ const sectors = [
         name: "BIM",
         description:
           "Advanced Building Information Modeling solutions revolutionizing the construction industry through innovative 3D modeling, project management, and digital twin technologies for enhanced building lifecycle management.",
-        logo: "/placeholder-logo.png",
+        logo: "/logo.png",
         website: "#",
         impact: "Digitizing construction through advanced BIM technologies",
         metrics: { growth: "+140%", customers: "6K+", locations: "UK-wide" },
@@ -158,7 +158,7 @@ export default function Portfolio() {
   const [selectedSector, setSelectedSector] = useState(0);
   const [selectedCompany, setSelectedCompany] = useState(0);
 
-  const allCompanies = sectors.flatMap((sector) => sector.companies);
+  // const allCompanies = sectors.flatMap((sector) => sector.companies);
   const currentSectorCompanies = sectors[selectedSector].companies;
 
   return (

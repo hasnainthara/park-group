@@ -10,7 +10,6 @@ import {
   Send,
   Building2,
   Users,
-  Globe,
   ArrowRight,
 } from "lucide-react";
 
@@ -26,7 +25,7 @@ export default function Contact() {
 
   const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const handleSubmit = async (e: { preventDefault: () => void }) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setIsSubmitting(true);
 
@@ -43,7 +42,7 @@ export default function Contact() {
     alert("Thank you for your message! We'll get back to you soon.");
   };
 
-  const handleChange = (e: { target: { name: any; value: any } }) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     setFormData({
       ...formData,
       [e.target.name]: e.target.value,
@@ -134,8 +133,8 @@ export default function Contact() {
             transition={{ duration: 0.8, delay: 0.4 }}
             viewport={{ once: true }}
           >
-            Ready to explore investment opportunities? We'd love to hear from
-            you. Let's discuss how Park Groups can help you achieve your
+            Ready to explore investment opportunities? We&apos;d love to hear from
+            you. Let&apos;s discuss how Park Groups can help you achieve your
             financial goals.
           </motion.p>
         </motion.div>

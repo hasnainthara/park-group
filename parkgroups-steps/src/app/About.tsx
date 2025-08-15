@@ -3,7 +3,6 @@
 import { motion } from "framer-motion";
 import { useState } from "react";
 import {
-  Users,
   MapPin,
   TrendingUp,
   Heart,
@@ -315,7 +314,7 @@ export default function About() {
               Ready to Join Our Journey?
             </h3>
             <p className="text-[#f8f6f0]/90 mb-6 lg:mb-8 leading-relaxed text-sm lg:text-base">
-              We're always looking for like-minded investors and partners who
+              We&apos;re always looking for like-minded investors and partners who
               share our vision of building sustainable, profitable businesses
               that make a positive impact on our communities.
             </p>
