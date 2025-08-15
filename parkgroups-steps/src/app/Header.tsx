@@ -100,17 +100,11 @@ export default function Header() {
               transition={{ duration: 0.6 }}
             >
               <motion.img
-                src="/pgnewlogo.png"
+                src="/park-groups-logo.svg"
                 alt="Park Groups Logo"
                 className="w-full h-full object-contain"
-                style={{
-                  filter:
-                    "sepia(1) hue-rotate(35deg) saturate(1.8) brightness(1.4) contrast(1.1)",
-                }}
                 whileHover={{
                   scale: 1.05,
-                  filter:
-                    "sepia(1) hue-rotate(35deg) saturate(2) brightness(1.6) contrast(1.2)",
                 }}
                 transition={{ duration: 0.3 }}
               />

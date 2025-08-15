@@ -68,9 +68,9 @@ export default function Intro({ show }: IntroOverlayProps) {
 
           {/* Main logo with fade animation only */}
           <motion.img
-            src="/logoo.png"
+            src="/park-groups-logo.svg"
             alt="Park Groups Logo"
-            className="w-100 h-100 relative z-10"
+            className="relative z-10 w-48 h-48 md:w-64 md:h-64 mx-auto"
             initial={{ opacity: 0 }}
             animate={{
               opacity: [0, 0.7, 0.4, 0.9, 0.6, 1],
@@ -195,9 +195,7 @@ export default function Intro({ show }: IntroOverlayProps) {
               times: [0, 0.25, 0.5, 0.65, 0.8, 1],
               ease: "easeInOut",
             }}
-          >
-            PARK.SYSTEM.INITIALIZED...
-          </motion.p>
+          ></motion.p>
 
           {/* Hexagonal data fragments representing companies */}
           {[...Array(6)].map((_, i) => (

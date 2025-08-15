@@ -18,40 +18,7 @@ import {
 export default function About() {
   const [activeTab, setActiveTab] = useState("story");
 
-  const ceos = [
-    {
-      name: "Raji",
-      role: "Co-Founder & CEO",
-      image: "/api/placeholder/300/300",
-      bio: "Visionary leader with over 15 years of experience in strategic investments and business development. Raji's expertise spans across multiple industries, from real estate to technology ventures.",
-      specialties: [
-        "Strategic Planning",
-        "Market Analysis",
-        "Investment Portfolio Management",
-      ],
-      achievements: [
-        "Founded 8 successful companies",
-        "£50M+ in managed investments",
-        "20+ years in Oxford business community",
-      ],
-    },
-    {
-      name: "Razzak",
-      role: "Co-Founder & CEO",
-      image: "/api/placeholder/300/300",
-      bio: "Dynamic entrepreneur known for identifying emerging market opportunities and fostering innovative business partnerships. Razzak brings a unique blend of traditional values and modern business acumen.",
-      specialties: [
-        "Business Development",
-        "Partnership Strategy",
-        "Community Relations",
-      ],
-      achievements: [
-        "Established 12 strategic partnerships",
-        "Expanded into 5 new markets",
-        "Champion of diversity in business",
-      ],
-    },
-  ];
+
 
   const stats = [
     { number: "15+", label: "Companies in Portfolio", icon: Building2 },
@@ -89,7 +56,6 @@ export default function About() {
 
   const tabs = [
     { id: "story", label: "Our Story", icon: Heart },
-    { id: "leadership", label: "Leadership", icon: Users },
     { id: "values", label: "Our Values", icon: Star },
   ];
 
@@ -293,94 +259,6 @@ export default function About() {
             </motion.div>
           )}
 
-          {activeTab === "leadership" && (
-            <motion.div
-              key="leadership"
-              initial={{ opacity: 0, x: 20 }}
-              animate={{ opacity: 1, x: 0 }}
-              exit={{ opacity: 0, x: -20 }}
-              transition={{ duration: 0.6 }}
-              className="space-y-6 lg:space-y-8"
-            >
-              {ceos.map((ceo, index) => (
-                <motion.div
-                  key={ceo.name}
-                  className="bg-gradient-to-br from-[#1a2e1f]/90 to-[#243529]/80 backdrop-blur-xl rounded-2xl lg:rounded-3xl p-6 lg:p-8 border border-[#e6c068]/20"
-                  initial={{ opacity: 0, y: 30 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.8, delay: index * 0.2 }}
-                  viewport={{ once: true }}
-                  whileHover={{ scale: 1.02 }}
-                >
-                  <div className="grid lg:grid-cols-3 gap-6 lg:gap-8 items-center">
-                    <div className="relative mx-auto lg:mx-0">
-                      <div className="relative w-48 lg:w-full max-w-xs">
-                        <div className="relative bg-gradient-to-br from-[#0a0f0c] to-[#1a2e1f] rounded-2xl lg:rounded-3xl p-3 lg:p-4 border border-[#e6c068]/30">
-                          <div className="w-full h-48 lg:h-64 bg-gradient-to-br from-[#e6c068]/20 to-[#d4af37]/20 rounded-xl lg:rounded-2xl flex items-center justify-center">
-                            <div className="w-16 lg:w-20 h-16 lg:h-20 bg-gradient-to-r from-[#e6c068] to-[#d4af37] rounded-full flex items-center justify-center">
-                              <Users className="w-8 lg:w-10 h-8 lg:h-10 text-[#0a0f0c]" />
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-
-                    <div className="lg:col-span-2 text-center lg:text-left">
-                      <div className="mb-4 lg:mb-6">
-                        <h3 className="text-2xl lg:text-3xl font-bold text-[#e6c068] mb-2">
-                          {ceo.name}
-                        </h3>
-                        <p className="text-lg lg:text-xl text-[#d4af37] font-medium mb-3 lg:mb-4">
-                          {ceo.role}
-                        </p>
-                        <p className="text-[#f8f6f0]/90 leading-relaxed text-sm lg:text-base">
-                          {ceo.bio}
-                        </p>
-                      </div>
-
-                      <div className="grid sm:grid-cols-2 gap-4 lg:gap-6">
-                        <div>
-                          <h4 className="text-[#e6c068] font-semibold mb-3 flex items-center gap-2 justify-center lg:justify-start">
-                            <Target className="w-4 h-4" />
-                            Specialties
-                          </h4>
-                          <ul className="space-y-2">
-                            {ceo.specialties.map((specialty, idx) => (
-                              <li
-                                key={idx}
-                                className="text-[#f8f6f0]/80 text-sm flex items-center gap-2 justify-center lg:justify-start"
-                              >
-                                <div className="w-1.5 h-1.5 bg-[#e6c068] rounded-full flex-shrink-0" />
-                                {specialty}
-                              </li>
-                            ))}
-                          </ul>
-                        </div>
-
-                        <div>
-                          <h4 className="text-[#e6c068] font-semibold mb-3 flex items-center gap-2 justify-center lg:justify-start">
-                            <Award className="w-4 h-4" />
-                            Key Achievements
-                          </h4>
-                          <ul className="space-y-2">
-                            {ceo.achievements.map((achievement, idx) => (
-                              <li
-                                key={idx}
-                                className="text-[#f8f6f0]/80 text-sm flex items-center gap-2 justify-center lg:justify-start"
-                              >
-                                <div className="w-1.5 h-1.5 bg-[#d4af37] rounded-full flex-shrink-0" />
-                                {achievement}
-                              </li>
-                            ))}
-                          </ul>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </motion.div>
-              ))}
-            </motion.div>
-          )}
 
           {activeTab === "values" && (
             <motion.div
